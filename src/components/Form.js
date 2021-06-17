@@ -15,7 +15,9 @@ const Form = props => {
 
     const callAddTodoList = e => {
         e.preventDefault();
-        props.add(title, desc);
+        if (title.trim()) {
+            props.add(title, desc);
+        }
         clearInputField();
     };
 
@@ -33,7 +35,7 @@ const Form = props => {
                 <span className='focus_line'></span>
             </div>
             <div className='desc'>
-                <textarea
+                <input
                     className='ef'
                     type='text'
                     onChange={handleDescInputChange}
