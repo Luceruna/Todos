@@ -19,9 +19,5 @@
             width: 1em;
             content: '▸';
         }
-
-        &--is-open:before {
-            content: '▾';
-        }
     }
 }
