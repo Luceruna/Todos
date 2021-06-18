@@ -4,7 +4,7 @@ form {
         width: 80%;
         margin: 40px 3%;
 
-        & input[type='text'], & textarea {
+        & input[type='text'] {
             font: 15px/24px sans-serif;
             box-sizing: border-box;
             width: 100%;
@@ -62,12 +62,12 @@ form {
         }
 
         &:focus ~ .focus_line:before,
-        &:focus ~ .focus_line:after{
+        &:focus ~ .focus_line:after {
             width: 50%;
             transition: 0.4s;
         }
 
-        & ~ Label {
+        & ~ label {
             position: absolute;
             z-index: -1;
             top: 4px;
