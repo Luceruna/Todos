@@ -15,6 +15,7 @@ import '../style/Board.scss'
  */
 const Board = props => {
     const { cards, onclick } = props;
+
     return (
         <div className='board'>
             <List

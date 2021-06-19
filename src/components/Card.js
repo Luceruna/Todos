@@ -7,11 +7,12 @@ import '../style/Card.scss';
  * @property {string} desc 説明
  * @property {number} id タスクID
  * @property {Function} onclick クリック処理関数 
+ * @property {string} status ステータス
  */
 
 /**
  * カードエレメント作成
- * @param {cardProps} props 
+ * @param {cardProps} props プロパティ
  * @returns カードエレメント
  */
 const Card = props => {
