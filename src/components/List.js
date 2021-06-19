@@ -11,7 +11,7 @@ class List extends Component {
                 <h1>{title}</h1>
                 {todos.map(todo =>
                 (
-                    <Card key={todo.id} {...todo} onclick={onclick} />
+                    <Card key={todo.id} onclick={onclick} {...todo} />
                 )
                 )}
             </div>

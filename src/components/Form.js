@@ -1,37 +1,69 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import '../style/Form.scss';
 
+/**
+ * アラートエレメント作成
+ * @param {Object} props 
+ * @returns アラートエレメント
+ */
 const Alert = props => <MuiAlert elevation={6} variant="filled" {...props} />;
 
+/**
+ * @namespace
+ * @typedef {Object} formProps
+ * @property {Function} add 追加関数
+ */
+
+/**
+ * フォームエレメント作成
+ * @param {formProps} props 
+ * @returns エレメント
+ */
 const Form = props => {
-    const [title, setTitle] = useState("");
-    const [desc, setDesc] = useState("");
+    const [title, setTitle] = useState('');
+    const [desc, setDesc] = useState('');
     const [open, setOpen] = useState(false);
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState('');
 
+    /**
+     * タイトル入力処理
+     * @param {Event} e イベント情報
+     */
     const handleTitleInputChange = e => setTitle(e.target.value);
-    const handleDescInputChange = e => setDesc(e.target.value);
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') { return; }
-        setOpen(false);
-    }
 
+    /**
+     * 詳細入力処理
+     * @param {Event} e イベント情報
+     */
+    const handleDescInputChange = e => setDesc(e.target.value);
+
+    /**
+     * アラート閉処理
+     * @param {Event} event イベント情報
+     */
+    const handleClose = e => setOpen(false);
+
+    /** フォームクリア処理 */
     const clearInputField = () => {
-        setTitle("");
-        setDesc("");
+        setTitle('');
+        setDesc('');
     };
 
+    /**
+     * タスク追加処理
+     * @param {Event} e イベント情報
+     */
     const callAddTodoList = e => {
         e.preventDefault();
         if (title.trim()) {
             props.add(title, desc);
+            clearInputField();
         } else {
             setMessage("タイトルを入力してください");
             setOpen(true);
         }
-        clearInputField();
     };
 
     return (
@@ -79,6 +111,6 @@ const Form = props => {
             </Snackbar>
         </div>
     )
-}
+};
 
 export default Form;
