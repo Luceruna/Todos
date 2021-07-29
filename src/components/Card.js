@@ -1,23 +1,12 @@
+import PropTypes from 'prop-types';
 import '../style/Card.scss';
 
 /**
- * @namespace
- * @typedef {Object} cardProps
- * @property {string} title タイトル
- * @property {string} desc 説明
- * @property {number} id タスクID
- * @property {Function} onclick クリック処理関数 
- * @property {string} status ステータス
- */
-
-/**
  * カードエレメント作成
- * @param {cardProps} props プロパティ
+ * @param {Object} props プロパティ
  * @returns カードエレメント
  */
-const Card = props => {
-    const { onclick, title, desc, id } = props;
-    
+const Card = ({ onclick, title, desc, id }) => {
     return (
         <div className='card' onClick={() => onclick(id)}>
             <div className='title'>{title}</div>
@@ -25,5 +14,12 @@ const Card = props => {
         </div>
     );
 };
+
+Card.propTypes = {
+    title: PropTypes.string.isRequired,
+    desc: PropTypes.string,
+    id: PropTypes.number.isRequired,
+    onclick: PropTypes.func.isRequired
+}
 
 export default Card;

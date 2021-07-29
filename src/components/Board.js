@@ -1,21 +1,13 @@
+import PropTypes from 'prop-types';
 import List from './List';
 import '../style/Board.scss'
 
 /**
- * @namespace
- * @typedef {Object} boardProps
- * @property {Array} cards タスク一覧
- * @property {Function} onclick クリック処理関数
- */
-
-/**
  * ボードエレメント作成
- * @param {boardProps} props プロパティ
+ * @param {Object} props プロパティ
  * @returns エレメント
  */
-const Board = props => {
-    const { cards, onclick } = props;
-
+const Board = ({ cards, onclick }) => {
     return (
         <div className='board'>
             <List
@@ -39,5 +31,16 @@ const Board = props => {
         </div>
     );
 };
+
+Board.propTypes = {
+    cards: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        desc: PropTypes.string,
+        id: PropTypes.number,
+        status: PropTypes.string.isRequired
+    })),
+    onclick: PropTypes.func.isRequired
+};
+
 
 export default Board;

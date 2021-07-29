@@ -1,29 +1,30 @@
+import PropTypes from 'prop-types';
 import Card from './Card';
 import '../style/List.scss';
 
 /**
- * @namespace
- * @typedef {Object} listProps
- * @property {Array} todos タスク一覧
- * @property {string} title タイトル
- * @property {Function} onclick クリック処理
- * @property {string} id ID
- */
-
-/**
  * リストエレメント作成
- * @param {listProps} props プロパティ
+ * @param {Object} props プロパティ
  * @returns リストエレメント
  */
-const List = props => {
-    const { todos, title, onclick } = props;
-
+const List = ({ todos, title, onclick }) => {
     return (
         <div className='list'>
             <h1>{title}</h1>
             {todos.map(todo => <Card key={todo.id} onclick={onclick} {...todo} />)}
         </div>
     );
+};
+
+List.propTypes = {
+    title: PropTypes.string.isRequired,
+    todos: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        desc: PropTypes.string,
+        id: PropTypes.number,
+        status: PropTypes.string.isRequired
+    })),
+    onclick: PropTypes.func.isRequired
 };
 
 export default List;

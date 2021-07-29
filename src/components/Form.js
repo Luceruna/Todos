@@ -11,14 +11,8 @@ import '../style/Form.scss';
 const Alert = props => <MuiAlert elevation={6} variant="filled" {...props} />;
 
 /**
- * @namespace
- * @typedef {Object} formProps
- * @property {Function} add 追加関数
- */
-
-/**
  * フォームエレメント作成
- * @param {formProps} props 
+ * @param {Object} props 
  * @returns エレメント
  */
 const Form = props => {
