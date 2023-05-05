@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Snackbar } from '@material-ui/core';
-import MuiAlert from '@material-ui/lab/Alert';
+import { Snackbar } from '@mui/material';
+import MuiAlert from '@mui/material/Alert';
+import PropTypes from 'prop-types';
 import '../style/Form.scss';
 
 /**
@@ -13,6 +14,7 @@ const Alert = props => <MuiAlert elevation={6} variant="filled" {...props} />;
 /**
  * フォームエレメント作成
  * @param {Object} props 
+ * @param {func} props.add add関数
  * @returns エレメント
  */
 const Form = props => {
@@ -105,6 +107,10 @@ const Form = props => {
             </Snackbar>
         </div>
     )
+};
+
+Form.propTypes = {
+    add: PropTypes.func.isRequired
 };
 
 export default Form;

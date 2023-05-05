@@ -5,6 +5,9 @@ import '../style/List.scss';
 /**
  * リストエレメント作成
  * @param {Object} props プロパティ
+ * @param {Object[]} props.todos カード一覧
+ * @param {string} props.title タイトル
+ * @param {func} props.onclick クリック関数
  * @returns リストエレメント
  */
 const List = ({ todos, title, onclick }) => {
@@ -21,7 +24,7 @@ List.propTypes = {
     todos: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
         desc: PropTypes.string,
-        id: PropTypes.number,
+        id: PropTypes.number.isRequired,
         status: PropTypes.string.isRequired
     })),
     onclick: PropTypes.func.isRequired
