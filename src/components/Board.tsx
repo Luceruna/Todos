@@ -1,15 +1,8 @@
-import PropTypes from 'prop-types';
-import List from './List';
+import List from './List.tsx';
 import '../style/Board.scss'
 
-/**
- * ボードエレメント作成
- * @param {Object} props プロパティ
- * @param {Object[]} props.cards カード情報
- * @param {func} props.onClick クリック関数
- * @returns エレメント
- */
-const Board = ({ cards, onclick }) => {
+/** ボードエレメント作成 */
+const Board: React.FC<Board> = ({ cards, onclick }) => {
     return (
         <div className='board'>
             <List
@@ -33,16 +26,5 @@ const Board = ({ cards, onclick }) => {
         </div>
     );
 };
-
-Board.propTypes = {
-    cards: PropTypes.arrayOf(PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        desc: PropTypes.string,
-        id: PropTypes.number,
-        status: PropTypes.string.isRequired
-    })),
-    onclick: PropTypes.func.isRequired
-};
-
 
 export default Board;

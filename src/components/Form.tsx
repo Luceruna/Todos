@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
-import PropTypes from 'prop-types';
 import '../style/Form.scss';
 
 /**
@@ -9,7 +8,7 @@ import '../style/Form.scss';
  * @param {Object} props 
  * @returns アラートエレメント
  */
-const Alert = props => <MuiAlert elevation={6} variant="filled" {...props} />;
+const Alert = (props: any) => <MuiAlert elevation={6} variant="filled" {...props} />;
 
 /**
  * フォームエレメント作成
@@ -17,7 +16,7 @@ const Alert = props => <MuiAlert elevation={6} variant="filled" {...props} />;
  * @param {func} props.add add関数
  * @returns エレメント
  */
-const Form = props => {
+const Form: React.FC<Form> = props => {
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
     const [open, setOpen] = useState(false);
@@ -27,19 +26,19 @@ const Form = props => {
      * タイトル入力処理
      * @param {Event} e イベント情報
      */
-    const handleTitleInputChange = e => setTitle(e.target.value);
+    const handleTitleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value);
 
     /**
      * 詳細入力処理
      * @param {Event} e イベント情報
      */
-    const handleDescInputChange = e => setDesc(e.target.value);
+    const handleDescInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setDesc(e.target.value);
 
     /**
      * アラート閉処理
      * @param {Event} event イベント情報
      */
-    const handleClose = e => setOpen(false);
+    const handleClose = (_: any) => setOpen(false);
 
     /** フォームクリア処理 */
     const clearInputField = () => {
@@ -51,7 +50,7 @@ const Form = props => {
      * タスク追加処理
      * @param {Event} e イベント情報
      */
-    const callAddTodoList = e => {
+    const callAddTodoList = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         if (title.trim()) {
             props.add(title, desc);
@@ -107,10 +106,6 @@ const Form = props => {
             </Snackbar>
         </div>
     )
-};
-
-Form.propTypes = {
-    add: PropTypes.func.isRequired
 };
 
 export default Form;
