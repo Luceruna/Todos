@@ -95,9 +95,11 @@ const Form: React.FC<Form> = props => {
                 autoHideDuration={3000}
                 onClose={handleClose}
             >
-                <Alert onClose={handleClose} severity="error">
-                    {message}
-                </Alert>
+                <div>
+                    <Alert onClose={handleClose} severity="error">
+                        {message}
+                    </Alert>
+                </div>
             </Snackbar>
         </>
     )
