@@ -34,10 +34,10 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       <Form add={addTodoList} />
       <Board cards={todoList} onclick={switchTodoList} />
-    </div>
+    </>
   );
 };
 

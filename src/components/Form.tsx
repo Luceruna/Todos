@@ -62,7 +62,7 @@ const Form: React.FC<Form> = props => {
     };
 
     return (
-        <div>
+        <>
             <form>
                 <div className='title'>
                     <input
@@ -90,12 +90,7 @@ const Form: React.FC<Form> = props => {
                 </div>
             </form>
             <Snackbar
-                anchorOrigin={
-                    {
-                        vertical: 'top',
-                        horizontal: 'center'
-                    }
-                }
+                anchorOrigin={{vertical: 'top', horizontal: 'center'}}
                 open={open}
                 autoHideDuration={3000}
                 onClose={handleClose}
@@ -104,7 +99,7 @@ const Form: React.FC<Form> = props => {
                     {message}
                 </Alert>
             </Snackbar>
-        </div>
+        </>
     )
 };
 
